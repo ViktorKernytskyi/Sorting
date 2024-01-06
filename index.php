@@ -1,18 +1,17 @@
 <?php
 
-include 'data.php';
-
-// Якщо GET-параметр "sort" передано, сортуємо дані за вибраним ключем
-if (isset($_GET['sort'])) {
-    $sortKey = $_GET['sort'];
-
-    // Функція сортування для асоціативного масиву за ключем
-    usort($arr, function ($a, $b) use ($sortKey) {
-        return strcmp($a[$sortKey], $b[$sortKey]);
-    });
-}
+include ('data.php');
 
 
-require 'table.php';
+$sortBy = isset($_GET['sort']) ? $_GET['sort'] : 'city';
+$order = isset($_GET['order']) ? $_GET['order'] : 'asc';
+
+
+usort($arr, function ($a, $b) use ($sortBy, $order) {
+    $result = $a[$sortBy] <=> $b[$sortBy];
+    return ($order === 'asc') ? $result : -$result;
+});
+
+require ('table.php');
 
 ?>
