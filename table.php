@@ -3,7 +3,6 @@ include('data.php');
 
 $sortBy = isset($_GET['sort']) ? $_GET['sort'] : 'city';
 $order = isset($_GET['order']) ? $_GET['order'] : 'asc';
-
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 if ($action === '1') {
@@ -23,7 +22,6 @@ if ($action === '1') {
         $sortBy = 'city';
     }
 }
-
 usort($arr, function ($a, $b) use ($sortBy, $order) {
     if ($a[$sortBy] === $b[$sortBy]) return 0;
     return ($order === 'asc') ? ($a[$sortBy] < $b[$sortBy] ? -1 : 1) : ($a[$sortBy] > $b[$sortBy] ? -1 : 1);
@@ -35,21 +33,17 @@ usort($arr, function ($a, $b) use ($sortBy, $order) {
     <title>Table Sort</title>
 </head>
 <body>
-<h3>таблиця продуктів</h3>
 <table border="1">
     <thead>
-
     <tr>
-        <th><a href="?sort=city&order=<?= $order; ?>">City</a></th>
-        <th><a href="?sort=name&order=<?= $order; ?>">Name</a></th>
-        <th><a href="?sort=country&order=<?= $order; ?>">Country</a></th>
-        <th><a href="?sort=price&order=<?= $order; ?>">Price</a></th>
-
+        <th><a href="?sort=city&order=<?= ($sortBy === 'city' && $order === 'asc') ? 'desc' : 'asc'; ?>&action=<?= ($sortBy === 'city' && $order === 'asc') ? '-1' : ($sortBy === 'city' && $order === 'desc' ? '0' : '1'); ?>">City</a></th>
+        <th><a href="?sort=name&order=<?= ($sortBy === 'name' && $order === 'asc') ? 'desc' : 'asc'; ?>&action=<?= ($sortBy === 'name' && $order === 'asc') ? '-1' : ($sortBy === 'name' && $order === 'desc' ? '0' : '1'); ?>">Name</a></th>
+        <th><a href="?sort=country&order=<?= ($sortBy === 'country' && $order === 'asc') ? 'desc' : 'asc'; ?>&action=<?= ($sortBy === 'country' && $order === 'asc') ? '-1' : ($sortBy === 'country' && $order === 'desc' ? '0' : '1'); ?>">Country</a></th>
+        <th><a href="?sort=price&order=<?= ($sortBy === 'price' && $order === 'asc') ? 'desc' : 'asc'; ?>&action=<?= ($sortBy === 'price' && $order === 'asc') ? '-1' : ($sortBy === 'price' && $order === 'desc' ? '0' : '1'); ?>">Price</a></th>
     </tr>
+
     </thead>
     <tbody>
-
-
     <?php
     foreach ($arr as $item) : ?>
         <tr>

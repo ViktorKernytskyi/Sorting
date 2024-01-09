@@ -5,7 +5,10 @@ $arr = [
     1 => ['city' => 'Kharkiv', 'name' => 'Orange', 'country' => 'UA', 'price' => 99],
     2 => ['city' => 'Kyiv', 'name' => 'Apple', 'country' => 'UA', 'price' => 29],
     3 => ['city' => 'Lviv', 'name' => 'Pie', 'country' => 'UA', 'price' => 79],
-    4 => ['city' => 'Poltava', 'name' => 'Apple', 'country' => 'UA', 'price' => 44]
+    4 => ['city' => 'Poltava', 'name' => 'Apple', 'country' => 'UA', 'price' => 44],
+    5 => ['city' => 'Odessa', 'name' => 'Peach', 'country' => 'UA', 'price' => 222],
+    6 => ['city' => 'Kropyvnytskyi', 'name' => 'Plum', 'country' => 'UA', 'price' => 40]
+
 ];
 
 
