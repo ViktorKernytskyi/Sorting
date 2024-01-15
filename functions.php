@@ -7,4 +7,12 @@ if (!function_exists('customSort')) {
     }
 }
 
+
+function generateLink($col, $sortBy, $order) {
+    $sortOrder = $sortBy === $col ? ($order === 'asc' ? 'desc' : 'asc') : 'asc';
+    $action = $sortBy === $col && $order !== '' ? ($order === 'asc' ? '-1' : '0') : '1';
+    return "?sort=$col&order=$sortOrder&action=$action";
+}
+
+
 ?>

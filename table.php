@@ -1,34 +1,9 @@
 <?php
-include('data.php');
-include('functions.php');
+require_once('functions.php');
 
-
-$sortBy = $_GET['sort'] ?? '';
-$order = $_GET['order'] ?? '';
-
-switch ($_GET['action'] ?? '') {
-    case '1':
-        $order = 'asc';
-        break;
-    case '-1':
-        $order = 'desc';
-        break;
-    case '0':
-        $sortBy = 'city';
-        $order = 'asc';
-        break;
+if (!isset($arr)) {
+    include('data.php');
 }
-
-if ($sortBy && $order) {
-    customSort($arr, $sortBy, $order);
-}
-function generateLink($col) {
-    global $sortBy, $order;
-    $sortOrder = $sortBy === $col ? ($order === 'asc' ? 'desc' : 'asc') : 'asc';
-    $action = $sortBy === $col && $order !== '' ? ($order === 'asc' ? '-1' : '0') : '1';
-    return "?sort=$col&order=$sortOrder&action=$action";
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,13 +16,13 @@ function generateLink($col) {
     <thead>
     <tr>
         <?php foreach (['city', 'name', 'country', 'price'] as $col) : ?>
-            <th><a href="<?= generateLink($col) ?>"><?= ucfirst($col) ?></a></th>
+            <th><a href="<?= generateLink($col, $sortBy, $order) ?>"><?= ucfirst($col) ?></a></th>
         <?php endforeach; ?>
     </tr>
     </thead>
     <tbody>
     <?php
-    foreach ($arr as $item) : ?>
+      foreach ($arr as $item) :  ?>
         <tr>
             <td><?= $item['city']; ?></td>
             <td><?= $item['name']; ?></td>
