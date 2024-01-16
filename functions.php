@@ -1,5 +1,4 @@
 <?php
-
 if (!function_exists('customSort')) {
     function customSort(&$arr, $sortBy, $order) {
         $sortOrder = ($order === 'asc') ? SORT_ASC : SORT_DESC;
@@ -7,12 +6,15 @@ if (!function_exists('customSort')) {
     }
 }
 
-
 function generateLink($col, $sortBy, $order) {
-    $sortOrder = $sortBy === $col ? ($order === 'asc' ? 'desc' : 'asc') : 'asc';
-    $action = $sortBy === $col && $order !== '' ? ($order === 'asc' ? '-1' : '0') : '1';
-    return "?sort=$col&order=$sortOrder&action=$action";
+    $newOrder = ($sortBy === $col) ? (($order === 'asc') ? 'desc' : 'asc') : 'asc';
+    return "?sort=$col&order=$newOrder";
 }
 
+function applySorting(&$arr, $sortBy, $order) {
+    if ($sortBy && $order !== 'reset') {
+        customSort($arr, $sortBy, $order);
+    }
+}
 
 ?>
