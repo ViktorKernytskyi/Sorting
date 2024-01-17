@@ -1,18 +1,23 @@
 <?php
+session_start();
 require_once('functions.php');
 require_once('data.php');
 
-$sortBy = $_GET['sort'] ?? '';
-$order = $_GET['order'] ?? '';
+// Отримуємо інформацію про сортування з параметрів GET
+$sortBy = $_GET['sort'] ?? 'city';
+$sortOrder = $_SESSION['sortOrder'] ?? [];
 
-// Скидання сортування
-if (isset($_GET['reset'])) {
-    $sortBy = 'city';
-    $order = '';
+// Перевірка, чи встановлений параметр скидання та чи він встановлений в '1'
+if (isset($_GET['reset']) && $_GET['reset'] === '1') {
+    // Виклик функції скидання сортування
+    resetSorting($sortBy, $sortOrder);
+    $_SESSION['sortOrder'] = [];
+} else {
+    // Виклик функції сортування на основі вибраного стовпця та порядку
+    applySort($arr, $sortBy, $sortOrder);
+    $_SESSION['sortOrder'] = $sortOrder;
 }
-
-applySorting($arr, $sortBy, $order);
-
 require_once('table.php');
 ?>
+
 

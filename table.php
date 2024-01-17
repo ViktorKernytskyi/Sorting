@@ -4,6 +4,7 @@ require_once('functions.php');
 if (!isset($arr)) {
     include('data.php');
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,6 +20,7 @@ if (!isset($arr)) {
             <th><a href="<?= generateLink($col, $sortBy, $order) ?>"><?= ucfirst($col) ?></a></th>
         <?php endforeach; ?>
     </tr>
+
     </thead>
     <tbody>
     <?php
@@ -35,5 +37,7 @@ if (!isset($arr)) {
 
 </body>
 </html>
+
+
 
 
