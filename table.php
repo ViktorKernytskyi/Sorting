@@ -17,14 +17,18 @@ if (!isset($arr)) {
     <thead>
     <tr>
         <?php foreach (['city', 'name', 'country', 'price'] as $col) : ?>
-            <th><a href="<?= generateLink($col, $sortBy, $order) ?>"><?= ucfirst($col) ?></a></th>
+            <th>
+                <a href="?sort=<?= $col ?>&order=<?= ($sortBy === $col ? ($order === 'asc' ? 'desc' : 'asc') : 'asc') ?>">
+                    <?= ucfirst($col) ?>
+                </a>
+            </th>
         <?php endforeach; ?>
     </tr>
-
     </thead>
+
     <tbody>
     <?php
-      foreach ($arr as $item) :  ?>
+    foreach ($arr as $item) :  ?>
         <tr>
             <td><?= $item['city']; ?></td>
             <td><?= $item['name']; ?></td>
@@ -37,6 +41,8 @@ if (!isset($arr)) {
 
 </body>
 </html>
+
+
 
 
 
