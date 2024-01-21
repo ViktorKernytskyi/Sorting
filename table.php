@@ -15,17 +15,13 @@ if (!isset($arr)) {
 <h3>Таблиця продуктів</h3>
 <table border="1">
     <thead>
-    <tr>
-<!--        --><?php echo "<br>" ."3 - "; var_dump( $links) ."<br>" ;?>
-        <?php foreach ($links as $link) : ?>
-            <?php echo "<br>" ."4 - "; var_dump( $link);?>
-            <th>
-                <a href="?sort=<?= $link['name'] ?>&order=<?= $link['order'] ?>">
-
-                    <?= ucfirst($link['name']) ?>
-                </a>
-            </th>
-        <?php endforeach; ?>
+        <?php foreach ($links as $item) : ?>
+        <th>
+            <a href="?sort=<?= $item['name'] ?>&order=<?= $item['order'] ?>">
+                <?= ucfirst($item['name']) ?>
+            </a>
+        </th>
+    <?php endforeach; ?>
     </tr>
     </thead>
     <tbody>

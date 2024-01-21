@@ -14,21 +14,15 @@ echo "DEBUG: Current URL = {$_SERVER['REQUEST_URI']}<br>";
 
 // Створення масиву для посилань
 $links = [];
-
 foreach ($columns as $col) {
     $link = [
         'name' => $col,
         'order' => $order,
     ];
-
     $links[] = $link;
-   // var_dump( $link);
-}
-echo "1 - ";
-var_dump( $links);
+  }
 // Зміна порядку сортування та скидання
 foreach ($links as &$link) {
-
     if ($sortBy === $link['name']) {
         if ($link['order'] === 'asc') {
             $link['order'] = 'desc';
@@ -41,9 +35,6 @@ foreach ($links as &$link) {
         $link['order'] = 'asc';
     }
 }
-echo "<br>" ."2 - ";
-var_dump( $links);
-
  //Перевірка чи існує сортування та встановлення сортування, якщо необхідно
 if ($sortBy != '' && in_array($order, ['asc', 'desc'])) {
     applySorting($arr, $sortBy, $order);
@@ -52,13 +43,12 @@ if ($sortBy != '' && in_array($order, ['asc', 'desc'])) {
     $sortBy = '';
     $order = '';
 }
-
 // Підключення файлу table.php для відображення таблиці
 require_once('table.php');
+//echo '<pre>';
+//print_r($links);
+//echo '</pre>';
 
-echo '<pre>';
-print_r($links);
-echo '</pre>';
 ?>
 
 
