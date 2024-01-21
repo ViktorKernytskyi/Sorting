@@ -1,16 +1,17 @@
 <?php
-function generateLink($col, $sortBy, $order)
-{
-// Якщо $col рівний 'reset', генеруємо посилання для скидання сортування
-    if ($col === 'reset') {
-        return "?sort=reset";
-    }
-// В іншому випадку генеруємо звичайне посилання для сортування
-    return "?sort=$col&order=" . ($sortBy === $col ? ($order === 'asc' ? 'desc' : 'asc') : 'asc');
-}
+require_once('data.php');
+//function generateLink($col, $sortBy, $order)
+//{
+//// Якщо $col рівний 'reset', генеруємо посилання для скидання сортування
+//    if ($col === 'reset') {
+//        return "?sort=reset";
+//    }
+//// В іншому випадку генеруємо звичайне посилання для сортування
+//    return "?sort=$col&order=" . ($sortBy === $col ? ($order === 'asc' ? 'desc' : 'asc') : 'asc');
+//}
 
 
-// Застосування сортування до масиву
+ //Застосування сортування до масиву
 function applySorting(&$array, $sortBy, $order)
 {
     // Логіка сортування (адаптуйте згідно зі структурою ваших даних)
